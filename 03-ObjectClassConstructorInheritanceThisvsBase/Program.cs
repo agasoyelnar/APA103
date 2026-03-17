@@ -15,6 +15,7 @@ class Program
         Administrator admin = new Administrator("Tural", "İsmayılov", 50, "t@gmail.com", "A001", "Dekan", "Tədris", 5);
 
         s1.ShowStudentInfo(); Console.WriteLine($"Teqaud: {s1.CalculateScholarship()} AZN");
+
         s2.ShowStudentInfo(); Console.WriteLine($"Teqaud: {s2.CalculateScholarship()} AZN");
         s3.ShowStudentInfo(); Console.WriteLine($"Teqaud: {s3.CalculateScholarship()} AZN");
 
