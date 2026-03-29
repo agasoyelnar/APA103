@@ -20,14 +20,14 @@ namespace _06_InterfaceAbstraction.Interface
                     return a / b;
                 else
                 {
-                    Console.WriteLine("0-a bölmək olmaz!");
+                    Console.WriteLine("0-a bolmek olmaz!");
                     return 0;
                 }
             }
 
             else
             {
-                Console.WriteLine("Yanlış əməl!");
+                Console.WriteLine("Yanlıs emel!");
                 return 0;
             }
         }
