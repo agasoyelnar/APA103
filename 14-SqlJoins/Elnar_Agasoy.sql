@@ -3,8 +3,8 @@ use Company1
 
 create table Employees(
 Id int primary key identity,
-[Name] varchar(30), 
-Surname varchar(30),
+[Name] varchar(30) not null, 
+Surname varchar(30) not null,
 Age int , 
 Salary decimal(18, 2), 
 Position varchar(30), 
@@ -14,13 +14,13 @@ CityId int foreign key references Cities(Id)
 
 create table Cities(
 Id int PRIMARY key identity,
-[Name] nvarchar (40),
+[Name] nvarchar (40)not null,
 CountryId int foreign key references Countries(Id)
 )
 
 create table Countries(
 Id int PRIMARY  key identity,
-Name nvarchar(30)
+Name nvarchar(30) unique not null
 )
 
 insert into Countries(Name) 
@@ -59,11 +59,7 @@ join Countries co on c.CountryId =co.Id
 select  [Name],Surname,Age,Salary, Position,IsDeleted from Employees 
 where position ='Reseption'
 
-select 
-e.Name, e.Surname,
-c.Name as City,
-co.Name as Country
-from Employees e
+select e.Name, e.Surname,c.Name as City, co.Name as Country from Employees e
 join Cities c on e.CityId = c.Id
 join Countries co on c.CountryId = co.Id
 where e.IsDeleted = 1
