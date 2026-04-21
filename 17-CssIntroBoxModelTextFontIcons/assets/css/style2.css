@@ -69,12 +69,12 @@
     gap: 30px;                  
 }
 
-.end span {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 14px;
+.end p {
+    font-size: 17px;
     color: white; 
     letter-spacing: 3px;
     font-weight: bold;
+    font-weight: 400;
 }
 
 
