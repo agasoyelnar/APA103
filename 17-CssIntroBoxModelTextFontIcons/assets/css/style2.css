@@ -1,0 +1,80 @@
+.box {
+    background-image: url('../images/arxafon2.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+
+
+.the {
+    font-family: 'Cinzel', serif;
+    font-size: 40px;
+    color: #97651a; 
+    display: block;
+    letter-spacing: 5px;
+    margin-top: 50px;
+}
+
+.hamilton {
+    font-family: 'Great Vibes', cursive;
+    font-size: 220px;
+    color: #222;
+    margin: -110px 0 0 0;
+}
+
+.font-family {
+    font-family: 'Cinzel', serif;
+    font-size: 40px;
+    letter-spacing: 12px;
+    color: #967f0d;
+    margin-top: -40px;
+}
+
+.sse {
+    padding: 10px 0;
+    margin: 20px 0;
+    width: 60%;
+}
+
+.sse p {
+    font-family: 'Cinzel', serif;
+    font-size: 40px;
+    letter-spacing: 8px;
+    margin: 0;
+    color: #333;
+    font-weight: bold;
+}
+
+.endtext {
+    font-family: 'Dancing Script', cursive;
+    font-size: 24px;
+    color: #b08d57;
+    margin-top: 20px;
+}
+
+.end {
+    background-color: #b08d57; 
+    width: 100%;
+    min-height: 50px;
+    display: flex;             
+    justify-content: center;    
+    align-items: center;        
+    gap: 30px;                  
+}
+
+.end span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: white; 
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+

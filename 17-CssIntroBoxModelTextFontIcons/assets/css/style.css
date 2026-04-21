@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+.box {
+ background-image: url('../images/download.jpeg');
+    background-size: cover;
+    background-position: center;
+    height: 80vh; 
+    width: 100%;
+    padding-top: 50px;
+}
+
+p {
+    width: 40%; 
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    color: rgb(251, 212, 14);  
+    font-size: 20px;        
+    margin-bottom: 70px;    
+
+}
