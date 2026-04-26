@@ -1,0 +1,487 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.stat {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.navbar {
+    background: rgb(81, 73, 73);
+    color: white;
+    padding: 25px 0;
+    gap: 10px;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    margin-right: 30px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.nav-a {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+
+/* HERO */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('../img/backgroundiamge.jpg') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 80px;
+}
+
+.hero-h1 {
+    max-width: 600px;
+    padding: 0 15px;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.fhr {
+    width: 50px;
+    height: 3px;
+    background-color: #f4623a;
+    border: none;
+    margin: 25px 0;
+}
+
+.hero-p {
+    max-width: 600px;
+    padding: 0 15px;
+}
+
+.hero-p p {
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.8;
+}
+
+.hero button {
+    margin-top: 30px;
+    background-color: #f4623a;
+    color: white;
+    padding: 18px 35px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.hero button:hover {
+    background-color: #d44b2d;
+    transform: scale(1.05);
+}
+
+
+/* ABOUT */
+
+.about {
+    background-color: #f05f40;
+    color: #ffffff;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.about-h2 h2 {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 30px 0;
+}
+
+.about-hr {
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 15px auto 25px auto;
+}
+
+.about-p p {
+    font-size: 17px;
+    font-family: 'Times New Roman', Times, serif;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.about button {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 20px 25px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.about button a {
+    color: #212529;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.about button:hover {
+    background-color: #c4baba;
+}
+
+
+/* Services */
+.service {
+    padding: 100px 20px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.service h2 {
+    font-size: 35px;
+    font-weight: 500;
+    color: #212529;
+    margin-bottom: 15px;
+}
+
+.servicehr {
+    width: 50px;
+    height: 3px;
+    background-color: #f05f40;
+    border: none;
+    margin: 30px auto 50px auto;
+}
+
+.element {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 0 70px;
+    gap: 15px;
+}
+
+.element>div {
+    flex: 1;
+    max-width: 80%;
+    padding: 30px;
+}
+
+.element i {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.element h3 {
+    font-size: 20px;
+    font-weight: 550;
+    margin-bottom: 10px;
+    color: #212529;
+}
+
+.element p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    color: #6c757d;
+    line-height: 1;
+}
+
+
+
+/* PORTFOLIO */
+
+.portfolio-container {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+}
+
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    display: block;
+}
+
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(213, 94, 43, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    opacity: 0;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover .card-overlay {
+    opacity: 1;
+}
+
+.category {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.project-name {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.portfolio-footer {
+    background-color: #212529;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 130px;
+}
+
+.portfolio h1 {
+    color: white;
+}
+
+.portfolio button {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 20px 25px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.portfolio button a {
+    color: #212529;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.portfolio button:hover {
+    background-color: #c4baba;
+}
+
+
+
+
+/* CONTACT */
+.contact {
+    padding: 140px;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.contact-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact-h2 h2 {
+    font-size: 30px;
+    font-weight: 550;
+    color: #212529;
+    margin-bottom: 15px;
+}
+
+.contact hr {
+    width: 50px;
+    height: 3px;
+    background-color: #f05f40;
+    border: none;
+    margin: 30px auto;
+}
+
+.contact-p p {
+    font-size: 17px;
+    color: #6c757d;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+
+    padding: 15px 20px;
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    font-size: 1rem;
+
+    color: black;
+    outline: none;
+    transition: border-color 0.2s ease;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+.contact-form textarea {
+    height: 150px;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #f05f40;
+    box-shadow: 0 0 0 0.25rem rgba(240, 95, 64, 0.25);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: black;
+    font-size: 1rem;
+    opacity: 1;
+}
+
+
+
+.contact-form button {
+    background-color: #e8816a;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 20px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #d94826;
+}
+
+.tel {
+    margin-top: 60px;
+    color: #080b0d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.tel span {
+    font-size: 1.2rem;
+    font-family: cursive;
+}
+
+footer {
+    background-color: #edeff1;
+    height: auto;
+    justify-content: center;
+    text-align: center;
+    padding: 50px;
+}
+
+footer span {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #6c757d;
+}
+
+
+
+
+
+
+/* RESPONSIVE */
+
+.hamburger {
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+@media(Max-width:992px) {
+    .nav-a {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+}
+
+@media (min-width: 576px) {
+    .portfolio-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+        font-size: 0.85rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 0.85rem;
+        padding: 10px 5px;
+    }
+
+    .contact {
+        padding: 50px 15px;
+    }
+
+    .element {
+        margin: 0 15px;
+    }
+
+    .element>div {
+        max-width: 100%;
+    }
+}
