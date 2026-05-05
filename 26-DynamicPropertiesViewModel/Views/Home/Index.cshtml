@@ -1,0 +1,22 @@
+@using System.Collections
+@using _26_DynamicPropertiesViewModel.Models
+@model _26_DynamicPropertiesViewModel.HomeModels.HomeVM
+<h1>Salam</h1>
+
+
+
+<ul>
+    @foreach (Students student in Model.Students)
+    {
+        <li>@student.Id-@student.Name-@student.Age</li>
+    }
+</ul>
+
+<table>
+    @foreach (Teacher teacher in Model.Teachers)
+    {
+        <tr>
+            <td>@teacher.Id-@teacher.Name-@teacher.Salary</td>
+        </tr>
+    }
+</table>
