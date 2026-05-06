@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontToBackSqlConnection", "FrontToBackSqlConnection.csproj", "{24213718-B9DE-492B-9B7B-C6404B7D0DDE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24213718-B9DE-492B-9B7B-C6404B7D0DDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24213718-B9DE-492B-9B7B-C6404B7D0DDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24213718-B9DE-492B-9B7B-C6404B7D0DDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24213718-B9DE-492B-9B7B-C6404B7D0DDE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
