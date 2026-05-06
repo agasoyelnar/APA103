@@ -1,4 +1,4 @@
-namespace _25_MVC_Intro
+namespace MVCIntro
 {
     public class Program
     {

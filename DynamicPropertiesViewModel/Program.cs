@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace _26_DynamicPropertiesViewModel;
+namespace DynamicPropertiesViewModel;
 
 public class Program
 {

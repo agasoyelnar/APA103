@@ -1,9 +1,9 @@
-using _26_DynamicPropertiesViewModel.HomeModels;
-using _26_DynamicPropertiesViewModel.Models;
+using DynamicPropertiesViewModel.HomeModels;
+using DynamicPropertiesViewModel.Models;
 using Microsoft.AspNetCore.Mvc;
-using HomeVM = _26_DynamicPropertiesViewModel.HomeModels.HomeVM;
+using HomeVM = DynamicPropertiesViewModel.HomeModels.HomeVM;
 
-namespace _26_DynamicPropertiesViewModel.Controllers;
+namespace DynamicPropertiesViewModel.Controllers;
 
 public class HomeController:Controller
 { 

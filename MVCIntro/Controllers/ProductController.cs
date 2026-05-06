@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace _25_MVC_Intro.Controllers
+namespace MVCIntro.Controllers
 {
     public class ProductController:Controller
     {

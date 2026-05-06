@@ -1,4 +1,4 @@
-namespace _26_DynamicPropertiesViewModel.Models;
+namespace DynamicPropertiesViewModel.Models;
 
 
 public class Students

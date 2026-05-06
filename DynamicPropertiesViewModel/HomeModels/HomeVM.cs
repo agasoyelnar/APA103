@@ -1,6 +1,6 @@
-using _26_DynamicPropertiesViewModel.Models;
+using DynamicPropertiesViewModel.Models;
 
-namespace _26_DynamicPropertiesViewModel.HomeModels;
+namespace DynamicPropertiesViewModel.HomeModels;
 
 public class HomeVM 
 {
