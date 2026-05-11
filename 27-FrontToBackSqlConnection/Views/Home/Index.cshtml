@@ -1,5 +1,4 @@
-﻿@using FrontToBackSqlConnection.Models
-@model FrontToBackSqlConnection.ViewModels.HomeVM
+﻿@model FrontToBackSqlConnection.ViewModels.HomeVM
 <!-- Begin Slider Area -->
 <div class="slider-area">
   <!-- Main Slider -->
@@ -177,7 +176,7 @@
                 <div class="col-xl-3 col-md-4 col-sm-6">
                   <div class="product-item">
                     <div class="product-img">
-                      <a href="shop.html">
+                      <a asp-controller="Shop" asp-action="Index">
                         <img
                           class="primary-img"
                           src="~/assets/images/website-images//@product.ProductImages.FirstOrDefault(p=>p.IsPrimary==true)?.Image"

@@ -15,19 +15,19 @@ public class HomeController : Controller
         _context = context;
     }
     
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
         
-        List<Slider> sliders = _context.Sliders
+        List<Slider> sliders =await _context.Sliders
             .OrderBy(s=>s.Order)
             .Where(s => !s.isDeleted)
             .Take(2)
-            .ToList();
+            .ToListAsync();
         
-        List<Product>products=_context.Products
+        List<Product>products= await _context.Products
             .Where(p=>!p.isDeleted)
-            .Include(p=>p.ProductImages)
-            .ToList();
+            .Include(p=>p.ProductImages.Where(pi => !pi.IsPrimary!=null))
+            .ToListAsync();
         
         HomeVM homeVM = new()
         {
