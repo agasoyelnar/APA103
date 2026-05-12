@@ -7,11 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="wwwroot\" />
+      <Folder Include="Areas\AdminPanel\Data\" />
+      <Folder Include="Areas\AdminPanel\Models\" />
+      <Folder Include="wwwroot\admin\" />
     </ItemGroup>
 
     <ItemGroup>
       <_ContentIncludedByDefault Remove="wwwroot\js\site.js" />
+      <_ContentIncludedByDefault Remove="Areas\AdminPanel\Views\Shared\_Layout.cshtml" />
     </ItemGroup>
 
     <ItemGroup>
@@ -25,6 +28,7 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.2" />
     </ItemGroup>
 
 </Project>

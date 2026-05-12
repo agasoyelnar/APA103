@@ -1,9 +1,12 @@
+using System.ComponentModel.DataAnnotations;
 using FrontToBackSqlConnection.Models.Base;
 
 namespace FrontToBackSqlConnection.Models;
 
 public class Category:BaseEntity
 {
-    public string Name { get; set; }
-    public List<Product> Products { get; set; }
+    [Required]
+    [MaxLength(30)]
+    public string? Name { get; set; }
+    public List<Product>? Products { get; set; }
 }
