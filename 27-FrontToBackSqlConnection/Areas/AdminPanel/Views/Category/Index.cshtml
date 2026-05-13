@@ -41,9 +41,9 @@
                   <p>@category.Products.Count</p>
                 </td>
                 <td>
-                  <a type="button" class="btn btn-outline-warning  btn-fw">Edit</a>
-                  <a type="button" class="btn btn-outline-danger  btn-fw">Delete</a>
-                  <a type="button" class="btn btn-outline-info  btn-fw">Detail</a>
+                  <a asp-action="update" asp-route-id="@category.Id" type="button" class="btn btn-outline-warning  btn-fw">Edit</a>
+                  <a asp-action="delete" asp-route-id="@category.Id" type="button" class="btn btn-outline-danger  btn-fw">Delete</a>
+                  <a asp-action="detail" asp-route-id="@category.Id" type="button" class="btn btn-outline-info  btn-fw">Detail</a>
                 </td>
               </tr>
             }
