@@ -103,4 +103,15 @@ public class CategoryController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    public async Task<IActionResult> Detail(int? id)
+    {
+        if (id is null || id < 1) return BadRequest();
+
+        Category category = await _context.Categories.Include(c=>c.Products).Where(c=>!c.isDeleted).FirstOrDefaultAsync(c=>c.Id == id);
+        if (category is null) return NotFound();
+        
+        return View(category);
+        
+    }
+
 }

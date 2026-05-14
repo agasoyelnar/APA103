@@ -1,0 +1,49 @@
+@using FrontToBackSqlConnection.Models
+@model Slider
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Slider Detail Table</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                Title
+                            </th>
+                            <th>
+                                SubTitle
+                            </th> 
+                            <th>
+                                Order
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                      
+                        <tr>
+                            <td>
+                                <img src="~/assets/images/website-images//@Model.Image"/>
+                            </td>
+                            <td>
+                                <p>@Model.Title</p>
+                            </td>
+                            <td>
+                                <p>@Model.SubTitle</p>
+                            </td>
+                            <td>
+                                <p>@Model.Order</p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a asp-action="index" class="btn btn-light">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
