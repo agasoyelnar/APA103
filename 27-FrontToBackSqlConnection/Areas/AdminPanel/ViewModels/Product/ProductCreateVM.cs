@@ -1,0 +1,16 @@
+using FrontToBackSqlConnection.Models;
+using Microsoft.Build.Framework;
+
+namespace FrontToBackSqlConnection.Areas.AdminPanel.ViewModels.Product;
+
+public class ProductCreateVM
+{
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+    public string Description { get; set; }
+    public string SKU { get; set; }
+    [Required]
+    public int? CategoryId { get; set; }
+    public List<Category>? Categories { get; set; }
+
+}
