@@ -35,6 +35,8 @@ public class ShopController : Controller
             .Where(p=>!p.isDeleted)
             .Include(p=>p.ProductImages)
             .Include(p=>p.Category)
+            .Include(p=>p.ProductTags)
+            .ThenInclude(pt=>pt.Tag)
             .FirstOrDefaultAsync(p => p.Id == id);
         
         List<Product>relatedProducts= await _context.Products

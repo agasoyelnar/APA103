@@ -1,10 +1,10 @@
-@model FrontToBackSqlConnection.Areas.AdminPanel.ViewModels.Product.ProductCreateVM
+@model FrontToBackSqlConnection.Areas.AdminPanel.ViewModels.Product.ProductUpdateVM
 
 <div class="row">
     <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Create Product</h4>
+                <h4 class="card-title">Update Product</h4>
                 <form class="forms-sample" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="exampleInputUsername1">Name</label>
@@ -21,7 +21,6 @@
                         <input asp-for="SKU" class="form-control" placeholder="SKU">
                         <span asp-validation-for="SKU" class="text-danger"></span>
                     </div>
-                    
                     <div class="form-group">
                         <label for="exampleInputUsername1">Category</label>
                         <select asp-for="CategoryId" class="form-control" asp-items="new SelectList(Model.Categories,nameof(Category.Id),nameof(Category.Name))">
@@ -29,7 +28,6 @@
                         </select>
                         <span asp-validation-for="CategoryId" class="text-danger"></span>
                     </div>
-                    
                     <div class="form-group">
                         <label for="exampleInputUsername1">Tag</label>
                         <select asp-for="TagIds" class="form-control" asp-items="new SelectList(Model.Tags,nameof(Tag.Id),nameof(Tag.Name))">
@@ -37,7 +35,6 @@
                         </select>
                         <span asp-validation-for="TagIds" class="text-danger"></span>
                     </div>
-                    
                     <div class="form-group">
                         <label for="exampleInputUsername1">Description</label>
                         <textarea asp-for="Description" class="form-control" placeholder="Description"></textarea>
