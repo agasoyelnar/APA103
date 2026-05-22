@@ -7,7 +7,7 @@ public class ProductCreateVM
 {
     public IFormFile MainPhoto { get; set; }
     public IFormFile HoverPhoto { get; set; }
-    public List<IFormFile>? AdditionalPhoto { get; set; }
+    public List<IFormFile>? AdditionalPhotos { get; set; }
     public string Name { get; set; }
     public decimal Price { get; set; }
     public string Description { get; set; }

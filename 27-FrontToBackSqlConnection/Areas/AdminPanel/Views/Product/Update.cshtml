@@ -1,11 +1,48 @@
 @model FrontToBackSqlConnection.Areas.AdminPanel.ViewModels.Product.ProductUpdateVM
-
+@{
+    ProductImage mainImage = Model.ProductImages.FirstOrDefault(pi => pi.IsPrimary == true);
+    ProductImage hoverImage = Model.ProductImages.FirstOrDefault(pi => pi.IsPrimary == false);
+    List<ProductImage> addImages = Model.ProductImages.Where(pi => pi.IsPrimary == null).ToList();
+}
 <div class="row">
     <div class="col-md-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Update Product</h4>
                 <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <img width="80px" height="80px" src="~/assets/images/website-images/@mainImage?.Image"
+                                 alt="Alternate text"/>
+                        </div>
+                        <label for="exampleInputUsername1">Main Image</label>
+                        <input asp-for="MainPhoto" class="form-control" accept="image/*">
+                        <span asp-validation-for="MainPhoto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <img width="80px" height="80px" src="~/assets/images/website-images/@hoverImage?.Image"
+                                 alt="Alternate text"/>
+                        </div>
+                        <label for="exampleInputUsername1">Second Images</label>
+                        <input asp-for="HoverPhoto" class="form-control" accept="image/*">
+                        <span asp-validation-for="HoverPhoto" class="text-danger"></span>
+                    </div>
+                    <div class="form-group d-flex flex-lg-wrap">
+                        @foreach (ProductImage addImage in addImages)
+                        {
+                            <div style="position:relative">
+                                <img width="80px" height="80px" src="~/assets/images/website-images/@addImage.Image"
+                                     alt="Alternate text"/>
+                                <i class="custom-btn mdi mdi-close-circle"
+                                   style="position: absolute; top: 5px;right: 5px;cursor: pointer"></i>
+                                <input asp-for="ImageIds" type="hidden" value="@addImage.Id"/>
+                            </div>
+                        }
+                        <label for="exampleInputUsername1">Additional Images</label>
+                        <input asp-for="AdditionalPhotos" class="form-control" accept="image/*">
+                        <span asp-validation-for="ImageIds" class="text-danger"></span>
+                    </div>
                     <div class="form-group">
                         <label for="exampleInputUsername1">Name</label>
                         <input asp-for="Name" class="form-control" placeholder="Name">
@@ -23,14 +60,16 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleInputUsername1">Category</label>
-                        <select asp-for="CategoryId" class="form-control" asp-items="new SelectList(Model.Categories,nameof(Category.Id),nameof(Category.Name))">
+                        <select asp-for="CategoryId" class="form-control"
+                                asp-items="new SelectList(Model.Categories, nameof(Category.Id), nameof(Category.Name))">
                             <option selected disabled>Choose Category</option>
                         </select>
                         <span asp-validation-for="CategoryId" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputUsername1">Tag</label>
-                        <select asp-for="TagIds" class="form-control" asp-items="new SelectList(Model.Tags,nameof(Tag.Id),nameof(Tag.Name))">
+                        <select asp-for="TagIds" class="form-control"
+                                asp-items="new SelectList(Model.Tags, nameof(Tag.Id), nameof(Tag.Name))">
                             <option selected disabled>Choose Tag</option>
                         </select>
                         <span asp-validation-for="TagIds" class="text-danger"></span>
@@ -47,3 +86,14 @@
         </div>
     </div>
 </div>
+
+@section DeleteImages{
+    <script>
+        var btns = document.querySelector(".custom-btn")
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", () => {
+                btns[i].parentElement.remove();
+            })
+        }
+    </script>
+}

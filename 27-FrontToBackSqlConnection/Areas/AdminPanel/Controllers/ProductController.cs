@@ -64,17 +64,17 @@ public class ProductController : Controller
             ModelState.AddModelError(nameof(productCreateVM.MainPhoto), "File type is incorrect");
             return View(productCreateVM);
         }
+        if (!productCreateVM.MainPhoto.CheckFileSize(FileSize.MB,1))
+        {
+            ModelState.AddModelError(nameof(productCreateVM.MainPhoto), "File size  less be than 2mb");
+            return View(productCreateVM);
+        }
         if (!productCreateVM.HoverPhoto.CheckFileType("image/"))
         {
             ModelState.AddModelError(nameof(productCreateVM.HoverPhoto), "File type is incorrect");
             return View(productCreateVM);
         }
         
-        if (!productCreateVM.MainPhoto.CheckFileSize(FileSize.MB,1))
-        {
-            ModelState.AddModelError(nameof(productCreateVM.MainPhoto), "File size  less be than 2mb");
-            return View(productCreateVM);
-        }
         if (!productCreateVM.HoverPhoto.CheckFileSize(FileSize.MB,1))
         {
             ModelState.AddModelError(nameof(productCreateVM.HoverPhoto), "File size  less be than 2mb");
@@ -125,6 +125,32 @@ public class ProductController : Controller
             product.ProductTags = productCreateVM.TagIds.Select(tId => new ProductTag { TagId = tId }).ToList();
         }
 
+        string info = string.Empty;
+        if (productCreateVM.AdditionalPhotos is not null)
+        {
+            foreach (var file in productCreateVM.AdditionalPhotos)
+            {
+                if (!file.CheckFileType("image/"))
+                {
+                    info += $"<p>{file.FileName} type was not correct</p>";
+                    continue;
+                }
+                if (!file.CheckFileSize(FileSize.KB,100))
+                {
+                    info += $"<p>{file.FileName} size was not correct</p>";
+                    continue;
+                }
+            
+                product.ProductImages.Add(new ProductImage
+                {
+                    Image = await file.CreateFile(_env.WebRootPath, "assets", "images", "website-images"),
+                    IsPrimary=null
+                });
+            }
+
+        }
+        TempData["FileInfo"] = info;
+        
         await _context.Products.AddAsync(product);
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
@@ -134,7 +160,10 @@ public class ProductController : Controller
     {
         if (id == null || id < 1) return BadRequest();
         Product? existProduct =
-            await _context.Products.Include(p => p.ProductTags).FirstOrDefaultAsync(p => p.Id == id);
+            await _context.Products
+                .Include(p=>p.ProductImages)
+                .Include(p => p.ProductTags)
+                .FirstOrDefaultAsync(p => p.Id == id);
         if (existProduct == null) return NotFound();
 
         if (!ModelState.IsValid) return View();
@@ -147,7 +176,8 @@ public class ProductController : Controller
             CategoryId = existProduct.CategoryId,
             TagIds = existProduct.ProductTags.Select(pt => pt.TagId).ToList(),
             Categories = await _context.Categories.ToListAsync(),
-            Tags = await _context.Tags.ToListAsync()
+            Tags = await _context.Tags.ToListAsync(),
+            ProductImages =  existProduct.ProductImages
         };
 
         return View(productUpdateVM);

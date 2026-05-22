@@ -1,5 +1,4 @@
 @using FrontToBackSqlConnection.Areas.AdminPanel.ViewModels.Product
-@using FrontToBackSqlConnection.Models
 @model List<FrontToBackSqlConnection.Areas.AdminPanel.ViewModels.Product.ProductGetVM>
 @{
     int count = 0;
@@ -9,6 +8,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Product Table</h4>
+                @Html.Raw(@TempData["FileInfo"])
                 <div class="table-responsive">
                     <a asp-action="create" type="button" class="btn btn-outline-success btn-fw">Create</a>
                     <table class="table table-striped">
