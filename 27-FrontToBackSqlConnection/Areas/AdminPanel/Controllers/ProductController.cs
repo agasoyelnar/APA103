@@ -351,11 +351,20 @@ public class ProductController : Controller
     public async Task<IActionResult> Delete(int? id)
     {
         if (id is null || id<1) return BadRequest();
-        Slider? slider=await _context.Sliders.Where(s=>!s.isDeleted).FirstOrDefaultAsync(s=>s.Id==id);
-        if (slider is null) return NotFound();
+        Product? product=await _context.Products
+            .Where(s=>!s.isDeleted)
+            .Include(p=>p.ProductImages)
+            .FirstOrDefaultAsync(p=>p.Id==id);
+        if (product is null) return NotFound();
 
-        slider.Image.DeleteFile(_env.WebRootPath, "assets", "images", "website-images");
-        _context.Remove(slider);
+        if (product.ProductImages is not null)
+        {
+            foreach (ProductImage productImage in product.ProductImages)
+            {
+                productImage.Image.DeleteFile(_env.WebRootPath, "assets", "images", "website-images");
+            }
+        }       
+        _context.Remove(product);
         await  _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }
@@ -365,12 +374,13 @@ public class ProductController : Controller
     {
         if (id is null || id < 1) return BadRequest();
 
-        Slider? slider = await _context.Sliders
+        Product? product = await _context.Products
+            .Include(p=>p.ProductImages)
             .Where(s => !s.isDeleted)
             .FirstOrDefaultAsync(s => s.Id == id);
 
-        if (slider is null) return NotFound();
+        if (product is null) return NotFound();
 
-        return View(slider);
+        return View(product);
     }
 }
