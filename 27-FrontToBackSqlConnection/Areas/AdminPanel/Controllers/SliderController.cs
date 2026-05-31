@@ -3,6 +3,7 @@ using FrontToBackSqlConnection.Data;
 using FrontToBackSqlConnection.Models;
 using FrontToBackSqlConnection.Utilities.Enum;
 using FrontToBackSqlConnection.Utilities.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,6 +20,8 @@ public class SliderController : Controller
         _context = context;
         _env = env;
     }
+    
+    [Authorize(Roles = "Admin,Moderator,Member")]
     public async Task<IActionResult> Index()
     {
         List<Slider> sliders = await _context.Sliders
@@ -28,12 +31,14 @@ public class SliderController : Controller
         return View(sliders);
     }
 
+    [Authorize(Roles = "Admin,Moderator")]
     public IActionResult Create()
     {
         return View();
     }
 
     [HttpPost]
+    [Authorize(Roles = "Admin,Moderator")]
     public async Task<IActionResult> Create(SliderCreateVM sliderCreateVM)
     {
         if (!ModelState.IsValid) return View();
@@ -65,6 +70,7 @@ public class SliderController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int? id)
     {
         if (id is null || id<1) return BadRequest();
@@ -77,6 +83,7 @@ public class SliderController : Controller
         return RedirectToAction(nameof(Index));
     }
     
+    [Authorize(Roles = "Admin,Moderator")]
     public async Task<IActionResult> Detail(int? id)
     {
         if (id is null || id < 1) return BadRequest();
@@ -89,8 +96,8 @@ public class SliderController : Controller
 
         return View(slider);
     }
-
-
+    
+    [Authorize(Roles = "Admin,Moderator")]
     public async Task<IActionResult> Update(int? id)
     {
         if (id is null || id<1) return BadRequest();

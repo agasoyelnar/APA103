@@ -1,5 +1,6 @@
 using FrontToBackSqlConnection.Data;
 using FrontToBackSqlConnection.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +16,7 @@ public class CategoryController : Controller
         _context = context;
     }
 
+    [Authorize(Roles = "Admin,Moderator,Member")]
     public async Task<IActionResult> Index()
     {
         List<Category> categories = await _context.Categories
@@ -24,12 +26,14 @@ public class CategoryController : Controller
     }
 
     [HttpGet]
+    [Authorize(Roles = "Admin,Moderator")]
     public IActionResult Create()
     {
         return View();
     }
 
     [HttpPost]
+    [Authorize(Roles = "Admin,Moderator")]
     public async Task<IActionResult> Create(Category category)
     {
         if (!ModelState.IsValid)
@@ -52,6 +56,7 @@ public class CategoryController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Roles = "Admin,Moderator")]
     public async Task<IActionResult> Update(int? id)
     {
         if (id is null || id < 1) return BadRequest();
@@ -65,6 +70,7 @@ public class CategoryController : Controller
     }
 
     [HttpPost]
+    [Authorize(Roles = "Admin,Moderator")]
     public async Task<IActionResult> Update(int? id, Category category)
     {
         if (id is null || id < 1) return BadRequest();
@@ -88,6 +94,7 @@ public class CategoryController : Controller
         return RedirectToAction(nameof(Index));
     }
     
+    [Authorize(Roles = "Admin")]
     public async Task<IActionResult> Delete(int? id)
     {
         if (id is null || id < 1) return BadRequest();
@@ -103,6 +110,7 @@ public class CategoryController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Roles = "Admin,Moderator")]
     public async Task<IActionResult> Detail(int? id)
     {
         if (id is null || id < 1) return BadRequest();

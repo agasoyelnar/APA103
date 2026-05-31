@@ -3,12 +3,14 @@ using FrontToBackSqlConnection.Data;
 using FrontToBackSqlConnection.Models;
 using FrontToBackSqlConnection.Utilities.Enum;
 using FrontToBackSqlConnection.Utilities.Extensions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FrontToBackSqlConnection.Areas.AdminPanel.Controllers;
 
 [Area("AdminPanel")]
+[Authorize(Roles = "Admin, Moderator")]
 public class ProductController : Controller
 {
     private readonly AppDbContext _context;
@@ -20,6 +22,7 @@ public class ProductController : Controller
         _env = env;
     }
 
+    [Authorize(Roles = "Admin,Moderator,Member")]
     public async Task<IActionResult> Index()
     {
         List<ProductGetVM> productGetVMs = await _context.Products
@@ -41,6 +44,7 @@ public class ProductController : Controller
         return View(productGetVMs);
     }
 
+    [Authorize(Roles = "Admin,Moderator")]
     public async Task<IActionResult> Create()
     {
         ProductCreateVM productCreateVM = new()
@@ -52,6 +56,7 @@ public class ProductController : Controller
     }
 
     [HttpPost]
+    [Authorize(Roles = "Admin,Moderator")]
     public async Task<IActionResult> Create(ProductCreateVM productCreateVM)
     {
         productCreateVM.Categories = await _context.Categories.Where(c => !c.isDeleted).ToListAsync();
@@ -155,6 +160,7 @@ public class ProductController : Controller
         return RedirectToAction(nameof(Index));
     }
 
+    [Authorize(Roles = "Admin,Moderator")]
     public async Task<IActionResult> Update(int? id)
     {
         if (id == null || id < 1) return BadRequest();
@@ -181,8 +187,9 @@ public class ProductController : Controller
 
         return View(productUpdateVM);
     }
-
+    
     [HttpPost]
+    [Authorize(Roles = "Admin,Moderator")]
     public async Task<IActionResult> Update(int? id, ProductUpdateVM productUpdateVM)
     {
         if (id == null || id < 1) return BadRequest();
@@ -338,5 +345,32 @@ public class ProductController : Controller
 
         await _context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
+    }
+    
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> Delete(int? id)
+    {
+        if (id is null || id<1) return BadRequest();
+        Slider? slider=await _context.Sliders.Where(s=>!s.isDeleted).FirstOrDefaultAsync(s=>s.Id==id);
+        if (slider is null) return NotFound();
+
+        slider.Image.DeleteFile(_env.WebRootPath, "assets", "images", "website-images");
+        _context.Remove(slider);
+        await  _context.SaveChangesAsync();
+        return RedirectToAction(nameof(Index));
+    }
+    
+    [Authorize(Roles = "Admin,Moderator")]
+    public async Task<IActionResult> Detail(int? id)
+    {
+        if (id is null || id < 1) return BadRequest();
+
+        Slider? slider = await _context.Sliders
+            .Where(s => !s.isDeleted)
+            .FirstOrDefaultAsync(s => s.Id == id);
+
+        if (slider is null) return NotFound();
+
+        return View(slider);
     }
 }

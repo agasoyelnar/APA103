@@ -1,0 +1,42 @@
+@model FrontToBackSqlConnection.ViewModels.LoginVM
+<!-- Begin Main Content Area -->
+<main class="main-content">
+  <div class="login-register-area section-space-y-axis-100">
+    <div class="container">
+      <div class="row" style="justify-content: center">
+        <div class="col-lg-6 pt-5 pt-lg-0">
+          <form method="post">
+            <div class="login-form"/>
+            <h4 class="login-title">Login</h4>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+              <div class="col-md-6 col-12">
+                <div class="col-md-12">
+                  <label for="UsernameOrEmail">Username or Email</label>
+                  <input asp-for="UsernameOrEmail" placeholder="Username or Email"/>
+                  <span asp-validation-for="UsernameOrEmail"></span>
+                </div>
+                <div class="col-md-12">
+                  <label for="Password">Password</label>
+                  <input asp-for="Password" placeholder="Password"/>
+                </div>
+                <div class="col-md-12 d-flex gap-2" >
+                  <label for="IsPersitent">Remember me</label>
+                  <input asp-for="IsPersitent"/>
+                  <span asp-validation-for="IsPersitent"></span>
+                </div>
+                <div class="col-12">
+                  <button
+                    class="btn btn-custom-size lg-size btn-pronia-primary">
+                    Login
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<!-- Main Content Area End Here -->
